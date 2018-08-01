@@ -6,8 +6,8 @@ class db:
   db_name = "jenkins.db"
 
   def insert(conn, row):
-      conn.execute('insert into jobs (job_name, date_checked) values (?, ?)',
-                (row['job_name'], row['date_checked']))
+      conn.execute('insert into jobs (job_name, job_status, date_checked) values (?, ?, ?)',
+                   (row['job_name'], row['job_status'], row['date_checked']))
       conn.commit()
       conn.close()
 
@@ -20,8 +20,8 @@ class db:
 
 
   def update(conn, row):
-      conn.execute('update jobs set date_checked = ? where job_name = ?',
-                (row['date_checked'], row['job_name']))
+      conn.execute('update jobs set date_checked = ?, job_status = ? where job_name = ?',
+                   (row['date_checked'], row['job_status'], row['job_name']))
       conn.commit()
       conn.close()
 
@@ -35,7 +35,7 @@ class db:
   def disp_rows(conn):
       cursor = conn.execute('select * from jobs order by job_name')
       for row in cursor:
-          print('{}: {}'.format(row['job_name'], row['date_checked']))
+          print('{}: {} {}'.format(row['job_name'], row['job_status'], row['date_checked']))
       conn.close()
 
 
@@ -43,7 +43,7 @@ class db:
       conn = init()
       conn.row_factory = sqlite3.Row
       print('Creating table: jobs (if it does not already exist:')
-      conn.execute('create table if not exists jobs ( id integer primary key autoincrement, job_name text, date_checked datetime )')
+      conn.execute('create table if not exists jobs ( id integer primary key autoincrement, job_name text, job_status text, date_checked datetime )')
       conn.commit()
       conn.close()
 

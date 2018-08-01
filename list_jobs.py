@@ -14,7 +14,7 @@ def storeJobs(jobs):
   dbHandle = db()
   conn = db.init()
   for job in jobs:
-    db.insert(conn, [job.name, datetime.now])
+    db.insert(conn, [job.name, job.disabled, datetime.now])
 
 
 if __name__ == "__main__":
