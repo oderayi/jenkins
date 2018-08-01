@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 
-import sys, jenkins, db
+import sys, jenkins, db, validators
 from datetime import datetime
 
 def listJobs(addr):
-  # TODO: validate address, ensure it's a valid url
+  valid = validators.url(addr)
+  if not valid:
+    print("URL enterred not valid.")
+    return
   server = jenkins.Jenkins(addr)
   jobs = server.get_jobs()
   print(f"Jobs on: {addr}\n")

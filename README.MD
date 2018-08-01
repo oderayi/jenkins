@@ -4,4 +4,5 @@ I assume the Jenkin's server address is entered at the command line instead of h
 
 ## Dependencies
 
-[python-jenkins](https://github.com/openstack/python-jenkins)
+- [python-jenkins](https://github.com/openstack/python-jenkins)
+- validators package for validating url
