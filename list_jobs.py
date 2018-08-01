@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import jenkins
+import sys, jenkins
 
 server_addr = 'http://localhost:800'
 
@@ -11,4 +11,6 @@ def listJobs(addr):
 
 
 if __name__ == "__main__":
+  inp = raw_input('Enter Jenkins server address: ')
+  print(inp)
   listJobs(server_addr)
