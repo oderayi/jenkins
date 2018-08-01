@@ -4,6 +4,7 @@ import sys, jenkins, db
 from datetime import datetime
 
 def listJobs(addr):
+  # TODO: validate address, ensure it's a valid url
   server = jenkins.Jenkins(addr)
   jobs = server.get_jobs()
   print(f"Jobs on: {addr}\n")
