@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, jenkins
+import sys, jenkins, db
 from datetime import datetime
 
 def listJobs(addr):
