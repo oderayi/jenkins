@@ -13,7 +13,7 @@ def listJobs(addr):
 def storeJobs(jobs):
   dbHandle = db()
   conn = db.init()
-  for job in jobs
+  for job in jobs:
     db.insert(conn, [job.name, datetime.now])
 
 
