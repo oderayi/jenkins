@@ -36,7 +36,12 @@ class db:
       conn = init()
       conn.row_factory = sqlite3.Row
       print('Creating table: jobs (if it does not already exist:')
-      conn.execute('create table if not exists jobs ( id integer primary key autoincrement, job_name text, job_status text, date_checked datetime )')
+      conn.execute('create table if not exists jobs (' +
+                   'id integer primary key autoincrement, ' + 
+                   'job_name text, ' + 
+                   'job_status text, ' + 
+                   'date_checked datetime ' + 
+                   ' )')
       conn.commit()
       conn.close()
 
