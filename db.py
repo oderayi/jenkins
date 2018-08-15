@@ -1,7 +1,6 @@
 import sqlite3
 
 class db:
-
   db_name = "jenkins.db"
 
   def insert(self, conn, row):
